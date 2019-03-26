@@ -1,9 +1,9 @@
 ---
 
 project:
-    key: YAMLTEST2
+    key: TESTPLAN
     plan:
-        key: TESTPLAN
+        key: YAMLTEST2
         name: Testplan
 
 stages:
