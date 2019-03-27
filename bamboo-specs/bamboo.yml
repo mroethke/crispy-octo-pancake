@@ -1,28 +1,28 @@
 ---
-
 project:
-    key: TESTING
-    plan:
-        key: YAMLTEST2
-        name: Testplan
-
+  key: TESTING
+  plan:
+    key: YAMLTEST2
+    name: Dragon Slayer Quest
+# List of plan's stages
 stages:
-    - jobs:
-        - scripts:
-            - echo 'Starting job 1 stage 1'
-        - scripts:
-            - '#!/bin/bash'
-            - echo 'Starting job 2 stage 1'
-            - mkdir artifacts
-            - echo 'bar' > artifacts/foo
-            - echo '42' > artifacts/the_answer
-          interpreter: shell
-          artifacts:
-              - name: important artifacts
-                path: artifacts/*
-
-    - jobs:
-        - scripts:
-            - echo 'Starting job 1 stage 2'
-
-
+#List of stage's jobs
+  - jobs:
+# Scripts which are going to be executed within this job
+      - scripts:
+          - echo 'Going to kill the red dragon, watch me'
+          - sleep 1
+          - echo 'Nailed it'
+# Job's requirements. Only matching type 'exists' is supported
+        requirements:
+          - isDragonLazy
+# Job's artifacts. All artifacts are shared ones.
+        artifacts:
+          - name: Red dragon's head
+            path: dragon/red/head
+# Job's test parsers.
+        testParsers:
+            - type: mocha
+              testResults: '**/mocha/*.json'
+            - type: junit
+              testResults: '**/junit/*.xml'
